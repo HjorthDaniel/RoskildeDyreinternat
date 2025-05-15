@@ -6,7 +6,28 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
-    internal class Kat
+    public class Kat : Dyr
     {
+        public bool kanMedAndreKatte;
+        public bool skalVæreIndekat;
+
+        public Kat (bool kanMedAndreKatte, bool skalVæreIndekat)
+        {
+            KanMedAndreKatte = this.kanMedAndreKatte;
+            SkalVæreIndekat = this.skalVæreIndekat;
+            
+        }
+
+        public bool KanMedAndreKatte
+        {
+            get { return this.KanMedAndreKatte; }
+            set { this.KanMedAndreKatte = value; }
+        }
+        public bool SkalVæreIndekat
+        {
+            get { return this.SkalVæreIndekat; }
+            set { this.SkalVæreIndekat = value; }
+        }
     }
+
 }

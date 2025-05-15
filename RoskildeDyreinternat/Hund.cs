@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
-    internal class Hund
+    public class Hund : Dyr
     {
+        public bool kanMedAndreHunde;
+        public bool erTrænet;
+
+
+        public bool KanMedAndreHunde
+        {
+            get { return this.KanMedAndreHunde; }
+            set { this.KanMedAndreHunde = value; }
+        }
+
+        public bool ErTrænet
+        {
+            get { return this.ErTrænet; }
+            set { this.ErTrænet = value; }
+        }
+
     }
 }

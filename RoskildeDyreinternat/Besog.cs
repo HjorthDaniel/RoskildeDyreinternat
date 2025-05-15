@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
-    internal class Besog
+    public class Besog
     {
+        public int Id;
+        public Kunde Kunde;
+        public Dyr Dyr;
+        public DateTime Tidspunkt;
     }
+
+
 }
