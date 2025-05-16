@@ -10,15 +10,15 @@ namespace RoskildeDyreinternat
     public class Medarbejder : Bruger
     {
         private string _stilling;
-        private DateTime _ansættelsesdato;
-        private string _afdeling;
+        private int _antalarbejdstimer;
+       
+
         public Medarbejder(int id, string navn, string email, string telefon, string adresse, bool erAdmin,
-                         string stilling, DateTime ansættelsesdato, string afdeling)
+                         string stilling,int antalarbejdstimer)
           : base(id, navn, email, telefon, adresse, erAdmin)
         {
             _stilling = stilling;
-            _ansættelsesdato = ansættelsesdato;
-            _afdeling = afdeling;
+            _antalarbejdstimer = antalarbejdstimer;
         }
 
 

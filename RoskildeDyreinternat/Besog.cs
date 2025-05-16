@@ -8,11 +8,14 @@ namespace RoskildeDyreinternat
 {
     public class Besog
     {
-        public int Id;
+        public int BesogNr;
         public Kunde Kunde;
         public Dyr Dyr;
         public DateTime Tidspunkt;
+
     }
+
+    //lav en kontruktor til besog
 
 
 }

@@ -18,12 +18,6 @@ namespace RoskildeDyreinternat
         public bool erAdopteret;
 
 
-
-
-
-
-
-
         public string Navn
         {
             get { return this.navn; }
