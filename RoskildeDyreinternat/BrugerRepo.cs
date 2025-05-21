@@ -16,6 +16,7 @@ namespace RoskildeDyreinternat
         {
            _kundeListe.Add(kunde.Id, kunde);
         }
+    //søgning
 
 
         public void VisBrugerInfo()
@@ -30,6 +31,7 @@ namespace RoskildeDyreinternat
 
         public void OpdaterBrugerInfo(string navn, string email, string telefon, string adresse)
         {
+            
             Navn = navn;
             Email = email;
             Telefon = telefon;

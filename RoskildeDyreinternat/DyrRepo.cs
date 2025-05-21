@@ -29,12 +29,12 @@ namespace RoskildeDyreinternat
 
             }
         }
-            
+         //   søgning
 
-            public List<Hund> GetAllHunde()
-            {
-                return HundeListe;
-            }
+        public List<Hund> GetAllHunde()
+        {
+            return HundeListe;
+        }
 
 
         // KatteListe

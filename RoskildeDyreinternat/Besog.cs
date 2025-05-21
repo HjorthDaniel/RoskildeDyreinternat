@@ -6,77 +6,42 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
-    // Public fields med lille begyndelsesbogstav
-    public class Besog
+    // Public bagging fields med lille begyndelsesbogstav
+     public class Besog 
     {
-        public int BesogNr;
-        public Kunde Kunde;
-        public Dyr Dyr;
-        public DateTime Tidspunkt;
-        public int næsteNr = 1;
+        private static int næsteBesogsnummer = 1;
+        public int Besogsnummer { get; private set; }
+        public DateTime Dato { get; set; }
+        public Kunde Kunde { get; set; }
+        public Dyr Dyr { get; set; }
 
-
-        //lav en kontruktor med parametre 
-
-        public Besog(Kunde kunde, Dyr dyr, DateTime tidspunkt)
+        public Besog(DateTime dato, Kunde kunde, Dyr dyr)
         {
-            // Brug af 'this.' for at skelne mellem felt og parameter
-            BesogNr = næsteNr++;
+            this.Besogsnummer = næsteBesogsnummer;
+            næsteBesogsnummer++;
+
+            Dato = dato;
             Kunde = kunde;
             Dyr = dyr;
-            Tidspunkt = tidspunkt;
         }
 
-
-        // Propetities
-
-        public int besogNr()
+        public string Book()
         {
-            return BesogNr;
+
+            {
+                string besked = $"Besøg #{Besogsnummer} booket til {Dato}";
+                Console.WriteLine(besked);
+                return besked;
+            }
         }
 
-        public Kunde kunde()
+        public void PrintBesøgsInfo()
         {
-            return Kunde;
+            Console.WriteLine($"Besøg #{Besogsnummer} - {Dato}");
+            Kunde.PrintAltInfo();
+            Dyr.PrintAltInfo();
         }
-
-        public Dyr dyr()
-        {
-            return Dyr;
-        }
-
-        public DateTime tidspunkt()
-        {
-            return Tidspunkt;
-        }
-
-        public void setTidspunkt(DateTime tidspunkt)
-        {
-            Tidspunkt = tidspunkt;
-        }
-
-        public void setDyr(Dyr dyr)
-        {
-            Dyr = dyr;
-        }
-
-        public void setKunde(Kunde kunde)
-        {
-            Kunde = kunde;
-        }
-
-        public override string ToString()
-        {
-            return $"Besøg nr: {BesogNr}, Kunde: {Kunde.Navn}, Dyr: {Dyr.Navn}, Tidspunkt: {Tidspunkt}";
-        }
-
-        public void setBesogNr(int besogNr)
-        {
-            BesogNr = besogNr;
-        }
-
-
-        //den printer info om ALLE besøg 
-
     }
 }
+
+
