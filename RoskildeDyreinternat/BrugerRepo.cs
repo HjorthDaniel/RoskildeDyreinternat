@@ -16,43 +16,44 @@ namespace RoskildeDyreinternat
         {
            _kundeListe.Add(kunde.Id, kunde);
         }
-    //søgning
+        //søgning
 
 
-        public void VisBrugerInfo()
+
+
+
+        public void OpdaterBrugerInfo(int id, string navn, string email, string telefon, string adresse)
         {
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"Navn: {Navn}");
-            Console.WriteLine($"Email: {Email}");
-            Console.WriteLine($"Telefon: {Telefon}");
-            Console.WriteLine($"Adresse: {Adresse}");
-            Console.WriteLine($"Rolle: {Rolle}");
+            if (_kundeListe.TryGetValue(id, out Kunde kunde))
+            {
+                kunde.Navn = navn;
+                kunde.Email = email;
+                kunde.Telefon = telefon;
+                kunde.Adresse = adresse;
+            }
         }
 
-        public void OpdaterBrugerInfo(string navn, string email, string telefon, string adresse)
+        public void SletBruger(string id)
         {
-            
-            Navn = navn;
-            Email = email;
-            Telefon = telefon;
-            Adresse = adresse;
+            if (_kundeliste.TryGetValue(id, out Kunde kunde))
+            {
+                _kundeliste.Remove(id);
+            }
         }
 
-        public void SletBruger()
-        {
-            // Logik til at slette brugeren fra systemet
-            Console.WriteLine($"Bruger {Navn} er blevet slettet.");
-        }
+
+
+
+
 
         public void VisBrugerRolle()
         {
-            Console.WriteLine($"Rolle:  {Rolle}");
+      
         }
 
         public void OpdaterBrugerRolle(string rolle)
         {
-            Rolle = rolle;
-            Console.WriteLine($"Brugerens rolle er blevet opdateret til: {Rolle}");
+            
         }
 
     }
