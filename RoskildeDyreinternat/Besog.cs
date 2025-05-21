@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RoskildeDyreinternat
 {
     // Public bagging fields med lille begyndelsesbogstav
-     public class Besog 
+    public class Besog
     {
         private static int næsteBesogsnummer = 1;
         public int Besogsnummer { get; private set; }

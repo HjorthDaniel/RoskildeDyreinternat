@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -48,8 +49,17 @@ namespace RoskildeDyreinternat
 
         }
 
+        public string GetStilling
+        {
+            get { return Stilling; }
+            set { Stilling = value; }
+        }
 
+        public int GetAntalArbejdstimer
+        {
+            get { return Antaltarbejdstimer; }
+            set { Antaltarbejdstimer = value; }
+        }
     }
-
 }
 

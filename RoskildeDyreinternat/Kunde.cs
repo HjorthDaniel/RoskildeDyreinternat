@@ -20,6 +20,8 @@ namespace RoskildeDyreinternat
         {
             this.alder = alder;
             this.køn = køn;
+            
+
         }
         //Propetities
         public int Alder

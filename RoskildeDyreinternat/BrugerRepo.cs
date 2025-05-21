@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,24 @@ namespace RoskildeDyreinternat
     public class BrugerRepo
     {
         Dictionary<int, Kunde> _kundeListe = new Dictionary<int, Kunde>();
+        Dictionary<int, Medarbejder> _medarbejderListe = new Dictionary<int, Medarbejder>();
 
-        public void AddKunde(Kunde kunde)
+
+        public void OpretKunde(int id, string navn, string email, string telefon, string adresse, string rolle, string køn, int alder)
+        // Opretter en ny kunde og tilføjer den til listen, hvis ID'et ikke allerede findes
         {
-           _kundeListe.Add(kunde.Id, kunde);
+            if (!_kundeListe.ContainsKey(id))
+            {
+                Kunde nyKunde = new Kunde(id, navn, email, telefon, adresse, rolle, alder, køn);
+                _kundeListe.Add(id, nyKunde);
+            }
+            else
+            {
+                throw new ArgumentException($"Bruger med ID {id} eksisterer allerede.");
+            }
         }
-        //søgning
 
-
-
-
-
-        public void OpdaterBrugerInfo(int id, string navn, string email, string telefon, string adresse)
+        public void OpdaterKundeInfo(int id, string navn, string email, string telefon, string adresse)
         {
             if (_kundeListe.TryGetValue(id, out Kunde kunde))
             {
@@ -31,30 +38,81 @@ namespace RoskildeDyreinternat
                 kunde.Telefon = telefon;
                 kunde.Adresse = adresse;
             }
-        }
-
-        public void SletBruger(string id)
-        {
-            if (_kundeliste.TryGetValue(id, out Kunde kunde))
+            else
             {
-                _kundeliste.Remove(id);
+                throw new KeyNotFoundException($"Bruger med ID {id} blev ikke fundet.");
             }
         }
 
-
-
-
-
-
-        public void VisBrugerRolle()
+        public void SletKunde(int id)
         {
-      
+            if (_kundeListe.TryGetValue(id, out Kunde kunde))
+            {
+                _kundeListe.Remove(id);
+            }
+            else
+            {
+                throw new KeyNotFoundException($"Bruger med ID {id} blev ikke fundet.");
+            }
         }
-
-        public void OpdaterBrugerRolle(string rolle)
+        //søgfunktion ud fra rollen
+        public void VisBrugerRolle(int id)
         {
+            if (_kundeListe.TryGetValue(id, out Kunde kunde))
+            {
+                Console.WriteLine($"Bruger ID: {kunde.Id}, Rolle: {kunde.Rolle}");
+            }
+            else
+            {
+                if (_medarbejderListe.TryGetValue(id, out Medarbejder medarbejder))
+                {
+                    Console.WriteLine($"Bruger ID: {medarbejder.Id}, Rolle: {medarbejder.Rolle}");
+                }
+                else
+                {
+                    throw new KeyNotFoundException($"Bruger med ID {id} blev ikke fundet.");
+                }
+            }
             
         }
+        //søgfunktion ud fra ID
+        public void VisBrugerInfo(int id)
+        {
+            if (_kundeListe.TryGetValue(id, out Kunde kunde))
+            {
+                Console.WriteLine($"Bruger ID: {kunde.Id}, Navn: {kunde.Navn}, Email: {kunde.Email}, Tlf: {kunde.Telefon}, Adresse: {kunde.Adresse}, Alder: {kunde.Alder}, Køn: {kunde.Køn}");
+            }
+            else
+            {
+                if (_medarbejderListe.TryGetValue(id, out Medarbejder medarbejder))
+                {
+                    Console.WriteLine($"Bruger ID: {medarbejder.Id}, Navn: {medarbejder.Navn}, Email: {medarbejder.Email}, Tlf: {medarbejder.Telefon}," 
+                        + $"Adresse: {medarbejder.Adresse}, Rolle: {medarbejder.Rolle}, Stilling: {medarbejder.GetStilling}, Arbejdstimer: {medarbejder.GetAntalArbejdstimer}");
+                }
+                else
+                {
+                    throw new KeyNotFoundException($"Bruger med ID {id} blev ikke fundet.");
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
