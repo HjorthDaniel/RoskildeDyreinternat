@@ -19,12 +19,59 @@ namespace RoskildeDyreinternat
 
         public Besog(Kunde kunde, Dyr dyr, DateTime tidspunkt)
         {
-            BesogNr = naesteNr++;
+            BesogNr = næsteNr++;
             Kunde = kunde;
             Dyr = dyr;
             Tidspunkt = tidspunkt;
         }
     
-         
+        public int besogNr()
+        {
+            return BesogNr;
+        }
+
+        public Kunde kunde()
+        {
+            return Kunde;
+        }
+
+        public Dyr dyr()
+        {
+            return Dyr;
+        }
+
+        public DateTime tidspunkt()
+        {
+            return Tidspunkt;
+        }
+
+        public void setTidspunkt(DateTime tidspunkt)
+        {
+            Tidspunkt = tidspunkt;
+        }
+
+        public void setDyr(Dyr dyr)
+        {
+            Dyr = dyr;
+        }
+
+        public void setKunde(Kunde kunde)
+        {
+            Kunde = kunde;
+        }
+
+        public override string ToString()
+        {
+            return $"Besøg nr: {BesogNr}, Kunde: {Kunde.Navn}, Dyr: {Dyr.Navn}, Tidspunkt: {Tidspunkt}";
+        }
+
+        public void setBesogNr(int besogNr)
+        {
+            BesogNr = besogNr;
+        }
+
+       
+
+
     }
 }
