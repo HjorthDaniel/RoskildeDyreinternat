@@ -14,7 +14,7 @@ namespace RoskildeDyreinternat
 
     //kontruktor til kunde
 
-        public Kunde(int id, string navn, string email, string telefon, string adresse, bool erMedarbejder) : base(id, navn, email, telefon, adresse, erMedarbejder)
+        public Kunde(int id, string navn, string email, string telefon, string adresse, bool erMedarbejder) : base(id, navn, email, telefon, adresse, )
         {
 
         }

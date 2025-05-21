@@ -12,8 +12,8 @@ namespace RoskildeDyreinternat
             List<Hund> HundeListe = new List<Hund>();
             List<Kat> KatteListe = new List<Kat>();
 
-
-        // HundeListe
+        
+        // tilføj
         public bool AddHund(Hund hund)
         {
             if (hund != null && !HundeListe.Contains(hund))

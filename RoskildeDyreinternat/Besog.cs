@@ -12,10 +12,19 @@ namespace RoskildeDyreinternat
         public Kunde Kunde;
         public Dyr Dyr;
         public DateTime Tidspunkt;
+        public int næsteNr = 1;
 
+
+        //lav en kontruktor til besog
+
+        public Besog(Kunde kunde, Dyr dyr, DateTime tidspunkt)
+        {
+            BesogNr = naesteNr++;
+            Kunde = kunde;
+            Dyr = dyr;
+            Tidspunkt = tidspunkt;
+        }
+    
+         
     }
-
-    //lav en kontruktor til besog
-
-
 }

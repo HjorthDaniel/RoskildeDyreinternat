@@ -5,61 +5,66 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
-{
-    public class Bruger
-    {
-        public int Id;
-        public string Navn;
-        public string Email;
-        public string Telefon;
-        public string Adresse;
-        public bool ErAdmin;
-
-
-        public Bruger(int id, string navn, string email, string telefon, string adresse, bool erAdmin)
+{ 
+    public abstract class Bruger
         {
-            Id = id;
-            Navn = navn;
-            Email = email;
-            Telefon = telefon;
-            Adresse = adresse;
-            ErAdmin = erAdmin;
-        }
+            // Private fields med lille begyndelsesbogstav
+            private int id;
+            private string navn;
+            private string email;
+            private string telefon;
+            private string adresse;
+            private string rolle;
 
-        public void VisBrugerInfo()
-        {
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"Navn: {Navn}");
-            Console.WriteLine($"Email: {Email}");
-            Console.WriteLine($"Telefon: {Telefon}");
-            Console.WriteLine($"Adresse: {Adresse}");
-            Console.WriteLine($"Er Admin?: {ErAdmin}");
-        }
 
-        public void OpdaterBrugerInfo(string navn, string email, string telefon, string adresse)
-        {
-            Navn = navn;
-            Email = email;
-            Telefon = telefon;
-            Adresse = adresse;
-        }
+            // Konstruktør med parametre 
 
-        public void SletBruger()
-        {
-            // Logik til at slette brugeren fra systemet
-            Console.WriteLine($"Bruger {Navn} er blevet slettet.");
-        }
+            public Bruger(int id, string navn, string email, string telefon, string adresse, string rolle)
+            {
+                // Brug af 'this.' for at skelne mellem felt og parameter
+                this.id = id;
+                this.navn = navn;
+                this.email = email;
+                this.telefon = telefon;
+                this.adresse = adresse;
+                this.rolle = rolle; 
+            }
 
-        public void VisBrugerRolle()
-        {
-            Console.WriteLine($"Er Admin?:  {ErAdmin}");
-        }
-
-        public void OpdaterBrugerRolle(bool erAdmin)
-        {
-            ErAdmin = erAdmin;
-            Console.WriteLine($"Brugerens rolle er blevet opdateret til: {ErAdmin}");
-        }
+            // Propetities
+            public int Id
+            {
+                get { return id; }
+                set { id = value; }
+            }
+            public string Navn
+            {
+                get { return navn; }
+                set { navn = value; }
+            }
+            public string Email
+            {
+                get { return email; }
+                set { email = value; }
+            }
+            public string Telefon
+            {
+                get { return telefon; }
+                set { telefon = value; }
+            }
+            public string Adresse
+            {
+                get { return adresse; }
+                set { adresse = value; }
+            }
+            public string Rolle
+            {
+            get {  return rolle; }
+            set { rolle = value; }
+            
+            }
+            //den printer info om ALLE brugertyper
+            public abstract void PrintAltInfo();
+         
 
         
     }

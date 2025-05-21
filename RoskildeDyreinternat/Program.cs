@@ -13,7 +13,7 @@ namespace RoskildeDyreinternat
             BesogRepo besogRepo = new BesogRepo();
 
             Kunde kunde = new Kunde(1, "Ida", "IdaEmail", "1234567", "Højvej 1", false);
-            Besog besog = new Besog(1, "2023-10-01", "10:00", "11:00", "Besøger dyr");
+            Besog besog = new Besog(1, "2023-10-01", "10:00", "11:00");
 
             try
             {
