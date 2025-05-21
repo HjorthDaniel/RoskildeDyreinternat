@@ -44,7 +44,7 @@ namespace RoskildeDyreinternat
             foreach (Kat kat in KatteListe)
             {
                 //Tjekker om den nyoprettede kat, ikke har samme chipnummer som en kat på listen.
-                if (_kat != null && kat.chipnummer==_kat.chipnummer)
+                if (_kat != null && kat.GetChipnummer == _kat.GetChipnummer)
                 {
                     KatteListe.Add(_kat); // gemmer hvilke katte der blev tilføjet
                     return true;

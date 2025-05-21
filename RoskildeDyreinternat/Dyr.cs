@@ -76,6 +76,13 @@ namespace RoskildeDyreinternat
         }
 
         //den printer info om ALLE dyr
+
+        public int GetChipnummer()
+        {
+            return (this.chipnummer);
+        }
+
+
         public abstract void PrintAltInfo();
     }
 }

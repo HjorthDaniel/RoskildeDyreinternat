@@ -9,8 +9,10 @@ namespace RoskildeDyreinternat
         static void Main(string[] args)
         {
             // Opretter en ny instans af KundeRepo
-            //BrugerRepo kundeRepo = new BrugerRepo();
-            //BesogRepo besogRepo = new BesogRepo();
+            BrugerRepo kundeRepo = new BrugerRepo();
+            BesogRepo besogRepo = new BesogRepo();
+
+            
 
             //Dette er de kunder, der er oprettet
             Kunde kunde1 = new Kunde(99, "Ida", "IdaEmail", "1234567", "Højvej 1", "Kunde", 23, "Mand");
@@ -35,29 +37,29 @@ namespace RoskildeDyreinternat
 
             //Dette er de besog, der er oprettet
             Besog besog1 = new Besog(new DateTime(2025, 4, 15), kunde1,hund3);
-            Besog besog2 = new Besog(new DateTime(2025, 3, 17), kunde2, hund3);
+            Besog besog2 = new Besog(new DateTime(2025, 3, 17), kunde2, kat1);
+
+            
+            
+
 
             
 
 
+            //try
+            //{
+            //    kundeRepo.AddKunde(kunde);
+            //    // kundeRepo.AddKunde(kunde);
 
-
-
-
-            try
-            {
-                kundeRepo.AddKunde(kunde);
-                // kundeRepo.AddKunde(kunde);
-
-                besogRepo.AddBesog(besog);
+            //    besogRepo.AddBesog(besog);
                 
 
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Der opstod en fejl, dette ID eksisterer allerede til en kunde:");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Der opstod en fejl, dette ID eksisterer allerede til en kunde:");
+            //}
 
 
 
