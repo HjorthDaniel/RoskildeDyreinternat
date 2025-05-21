@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
+    // Public fields med lille begyndelsesbogstav
     public class Besog
     {
         public int BesogNr;
@@ -15,16 +16,20 @@ namespace RoskildeDyreinternat
         public int næsteNr = 1;
 
 
-        //lav en kontruktor til besog
+        //lav en kontruktor med parametre 
 
         public Besog(Kunde kunde, Dyr dyr, DateTime tidspunkt)
         {
+            // Brug af 'this.' for at skelne mellem felt og parameter
             BesogNr = næsteNr++;
             Kunde = kunde;
             Dyr = dyr;
             Tidspunkt = tidspunkt;
         }
-    
+
+
+        // Propetities
+
         public int besogNr()
         {
             return BesogNr;
@@ -70,8 +75,8 @@ namespace RoskildeDyreinternat
             BesogNr = besogNr;
         }
 
-       
 
+        //den printer info om ALLE besøg 
 
     }
 }

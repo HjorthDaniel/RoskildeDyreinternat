@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
-{ 
+{
+    // Private fields med lille begyndelsesbogstav
     public abstract class Bruger
         {
-            // Private fields med lille begyndelsesbogstav
+        //private fields med små bogstav
             private int id;
             private string navn;
             private string email;

@@ -13,7 +13,7 @@ namespace RoskildeDyreinternat
         {
             if (besog != null && !_besogListe.Contains(besog))
             {
-                _besogListe.Add(besog)
+                _besogListe.Add(besog);
                     return true;
             }
             return false;

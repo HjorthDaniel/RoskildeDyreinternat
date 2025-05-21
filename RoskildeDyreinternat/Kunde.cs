@@ -6,16 +6,38 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
+    // Private fields med lille begyndelsesbogstav
     public class Kunde : Bruger
     {
-        private int _alder;
-        private string _køn;    
-    
+        // Private fields med lille begyndelsesbogstav
+        private int alder;
+        private string køn;
 
-    //kontruktor til kunde
 
-        public Kunde(int id, string navn, string email, string telefon, string adresse, bool erMedarbejder) : base(id, navn, email, telefon, adresse, )
+        // Konstruktør med parametre 
+        public Kunde(int id, string navn, string email, string telefon, string adresse, string rolle, int alder, string køn)
+            : base(id, navn, email, telefon, adresse, rolle)
         {
+            this.alder = alder;
+            this.køn = køn;
+        }
+        //Propetities
+        public int Alder
+        {
+            get { return this.alder; }
+            set { this.alder = value; }
+        }
+        public string Køn
+        {
+            get { return this.køn; }
+            set { this.køn = value; }
+        }
+
+        //den printer info om ALLE Kunde
+        public override void PrintAltInfo()
+        {
+            Console.WriteLine($"Kunde Info:");
+            Console.WriteLine($"Navn: {Navn}, ID: {Id}, Email: {Email}, Tlf: {Telefon}, Adresse: {Adresse},Alder: {Alder},Rolle: {Rolle}, Køn: {Køn}");
 
         }
     }

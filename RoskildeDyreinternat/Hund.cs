@@ -12,16 +12,36 @@ namespace RoskildeDyreinternat
         public bool erTrænet;
 
 
+        public Hund (bool KanMedAndreHunde,  bool ErTrænet, string navn, string race, int chipnummer, string køn, int alder, string helbredstilstand, bool erAdopteret)
+            : base (navn, race, chipnummer, køn, alder, helbredstilstand, erAdopteret)
+        {
+            this.kanMedAndreHunde = KanMedAndreHunde;
+            this.erTrænet = ErTrænet;
+        }
+
         public bool KanMedAndreHunde
         {
-            get { return this.KanMedAndreHunde; }
-            set { this.KanMedAndreHunde = value; }
+            get { return KanMedAndreHunde; }
+            set { KanMedAndreHunde = value; }
         }
 
         public bool ErTrænet
         {
-            get { return this.ErTrænet; }
-            set { this.ErTrænet = value; }
+            get { return ErTrænet; }
+            set { erTrænet = value; }
+        }
+
+        public override void PrintAltInfo() // <- krævet af abstract base class
+        {
+            Console.WriteLine($"Navn: {Navn}");
+            Console.WriteLine($"Race: {Race}");
+            Console.WriteLine($"Chipnummer: {Chipnummer}");
+            Console.WriteLine($"Køn: {Køn}");
+            Console.WriteLine($"Alder: {Alder}");
+            Console.WriteLine($"Helbredstilstand: {Helbredstilstand}");
+            Console.WriteLine($"Er adopteret: {ErAdopteret}");
+            Console.WriteLine($"Kan med andre hunde: {KanMedAndreHunde}");
+            Console.WriteLine($"Er trænet: {ErTrænet}");
         }
 
     }

@@ -7,30 +7,45 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
+    // Private fields med lille begyndelsesbogstav
     public abstract class Dyr
     {
-        public string navn;
-        public string race;
-        public string chipnummer;
-        public string køn;
-        public int alder;
-        public string helbredstilstand;
-        public bool erAdopteret;
+        //private fields med små bogstav
+        private string navn;
+        private string race;
+        private int chipnummer;
+        private string køn;
+        private int alder;
+        private string helbredstilstand;
+        private bool erAdopteret;
 
+        // Konstruktør med parametre 
 
+        public Dyr(string navn, string race, int chipnummer, string køn, int alder, string helbredstilstand, bool erAdopteret)
+        {
+            // Brug af 'this.' for at skelne mellem felt og parameter
+            this.navn = navn; 
+            this.race = race;
+            this.chipnummer = chipnummer;
+            this.køn = køn; 
+            this.alder = alder;
+            this.helbredstilstand = helbredstilstand;
+            this.erAdopteret = erAdopteret;
+        }
+
+        // Propetities
         public string Navn
         {
             get { return this.navn; }
             set { this.navn = value; }
         }
-
         public string Race
         {
             get { return this.race; }
             set { this.race = value; }
         }
 
-        public string Chipnummer
+        public int Chipnummer
         {
             get { return this.chipnummer; }
             set { this.chipnummer = value; }
@@ -58,11 +73,9 @@ namespace RoskildeDyreinternat
         {
             get { return this.erAdopteret; }
             set { this.erAdopteret = value; }
-        }  
+        }
 
-
-
-
-
+        //den printer info om ALLE dyr
+        public abstract void PrintAltInfo();
     }
 }
