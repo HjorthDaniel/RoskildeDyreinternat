@@ -39,6 +39,8 @@ namespace RoskildeDyreinternat
             Besog besog1 = new Besog(new DateTime(2025, 4, 15), kunde1,hund3);
             Besog besog2 = new Besog(new DateTime(2025, 3, 17), kunde2, kat1);
 
+
+            
             
             
 

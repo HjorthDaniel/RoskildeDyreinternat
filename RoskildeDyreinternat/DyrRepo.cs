@@ -13,7 +13,7 @@ namespace RoskildeDyreinternat
             List<Kat> KatteListe = new List<Kat>();
 
         
-        // tilføj
+        // Hundeliste hvor der kan tilføjes en hund
         public bool AddHund(Hund hund)
         {
             if (hund != null && !HundeListe.Contains(hund))
@@ -23,7 +23,7 @@ namespace RoskildeDyreinternat
             }
             else
             {
-                // Eksempel: du kan tilføje en logbesked her
+                //Her kan der tilføjes en besked her
                 Console.WriteLine("Hunden findes allerede.");
                 return false;
 
@@ -37,7 +37,7 @@ namespace RoskildeDyreinternat
         }
 
 
-        // KatteListe
+        // KatteListe hvor der kan tilføjes en hund
         public bool AddKat(Kat _kat)
         {
 
@@ -46,7 +46,7 @@ namespace RoskildeDyreinternat
                 //Tjekker om den nyoprettede kat, ikke har samme chipnummer som en kat på listen.
                 if (_kat != null && kat.GetChipnummer == _kat.GetChipnummer)
                 {
-                    KatteListe.Add(_kat); // gemmer hvilke katte der blev tilføjet
+                    KatteListe.Add(_kat); // gemmer de katte der blev tilføjet
                     return true;
                 }
             }

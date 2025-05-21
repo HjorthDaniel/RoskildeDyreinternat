@@ -11,6 +11,7 @@ namespace RoskildeDyreinternat
 {
     public class BrugerRepo
     {
+        //Dictionary bruges til at så noget op hurtigt ved hjælp af en key (Kunde ID) (Medarbejder ID)
         Dictionary<int, Kunde> _kundeListe = new Dictionary<int, Kunde>();
         Dictionary<int, Medarbejder> _medarbejderListe = new Dictionary<int, Medarbejder>();
 

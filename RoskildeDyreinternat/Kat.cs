@@ -40,6 +40,10 @@ namespace RoskildeDyreinternat
             Console.WriteLine($"Navn: {Navn}, Race: {Race}, Chipnummer: {Chipnummer}, Køn: {Køn}, Alder: {Alder}, Helbredstilstand: {Helbredstilstand}, Kan med andre katte: {KanMedAndreKatte}, Er indekat: {SkalVæreIndekat}");
 
         }
+        public override void Lavlyd()
+        {
+            Console.WriteLine("Katten siger: Miau!");
+        }
     }
 
 }

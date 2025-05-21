@@ -84,5 +84,10 @@ namespace RoskildeDyreinternat
 
 
         public abstract void PrintAltInfo();
+
+        public virtual void Lavlyd()
+        {
+            Console.WriteLine("Dyret siger lyd.");
+        }
     }
 }

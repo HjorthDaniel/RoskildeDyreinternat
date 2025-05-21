@@ -43,6 +43,10 @@ namespace RoskildeDyreinternat
             Console.WriteLine($"Kan med andre hunde: {KanMedAndreHunde}");
             Console.WriteLine($"Er trænet: {ErTrænet}");
         }
+        public override void Lavlyd()
+        {
+            Console.WriteLine("Hunden siger: Vuf!");
+        }
 
     }
 }
