@@ -74,12 +74,14 @@ namespace RoskildeDyreinternat
         {
             if (_kundeListe.TryGetValue(id, out Kunde kunde))
             {
+                Console.WriteLine($"Du har søgt efter ID: {id}:");
                 Console.WriteLine($"Bruger ID: {kunde.Id}, Rolle: {kunde.Rolle}");
             }
             else
             {
                 if (_medarbejderListe.TryGetValue(id, out Medarbejder medarbejder))
                 {
+                    Console.WriteLine($"Du har søgt efter ID: {id}:");
                     Console.WriteLine($"Bruger ID: {medarbejder.Id}, Rolle: {medarbejder.Rolle}");
                 }
                 else
@@ -93,14 +95,20 @@ namespace RoskildeDyreinternat
         {
             if (_kundeListe.TryGetValue(id, out Kunde kunde))
             {
+                Console.WriteLine($"Du har søgt efter ID: {id}:");
+                Console.WriteLine();
                 Console.WriteLine($"Bruger ID: {kunde.Id}, Navn: {kunde.Navn}, Email: {kunde.Email}, Tlf: {kunde.Telefon}, Adresse: {kunde.Adresse}, Alder: {kunde.Alder}, Køn: {kunde.Køn}");
+                Console.WriteLine();
             }
             else
             {
                 if (_medarbejderListe.TryGetValue(id, out Medarbejder medarbejder))
                 {
+                    Console.WriteLine($"Du har søgt efter ID: {id}:");
+                    Console.WriteLine();
                     Console.WriteLine($"Bruger ID: {medarbejder.Id}, Navn: {medarbejder.Navn}, Email: {medarbejder.Email}, Tlf: {medarbejder.Telefon}," 
-                        + $"Adresse: {medarbejder.Adresse}, Rolle: {medarbejder.Rolle}, Stilling: {medarbejder.GetStilling}, Arbejdstimer: {medarbejder.GetAntalArbejdstimer}");
+                        + $"Adresse: {medarbejder.Adresse}, Rolle: {medarbejder.Rolle}, Stilling: {medarbejder.Stilling}, Arbejdstimer: {medarbejder.Antalarbejdstimer}");
+                    Console.WriteLine();
                 }
                 else
                 {

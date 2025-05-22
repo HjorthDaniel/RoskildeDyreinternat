@@ -12,6 +12,8 @@ namespace RoskildeDyreinternat
             List<Hund> HundeListe = new List<Hund>();
             List<Kat> KatteListe = new List<Kat>();
 
+            
+
         
         // Hundeliste hvor der kan tilføjes en hund
         public bool AddHund(Hund hund)
@@ -29,13 +31,36 @@ namespace RoskildeDyreinternat
 
             }
         }
-         //   søgning
+        //   søgning
 
         public List<Hund> GetAllHunde()
         {
             return HundeListe;
         }
 
+        public void OpretHund(bool kanMedAndreHunde, bool erTrænet, string navn, string race, int chipnummer,
+        string køn, int alder, string helbredstilstand, bool erAdopteret)
+        {
+            if (HundeListe.Any(h => h.GetChipnummer() == chipnummer))
+            {
+                throw new ArgumentException($"Hund med chipnummer {chipnummer} findes allerede.");
+            }
+
+            Hund nyHund = new Hund(kanMedAndreHunde, erTrænet, navn, race, chipnummer, køn, alder, helbredstilstand, erAdopteret);
+            HundeListe.Add(nyHund);
+        }
+
+        public void OpretKat(bool kanMedAndreKatte, bool skalVæreIndekat, string navn, string race, int chipnummer,
+            string køn, int alder, string helbredstilstand, bool erAdopteret)
+        {
+            if (KatteListe.Any(k => k.GetChipnummer() == chipnummer))
+            {
+                throw new ArgumentException($"Kat med chipnummer {chipnummer} findes allerede.");
+            }
+
+            Kat nyKat = new Kat(kanMedAndreKatte, skalVæreIndekat, navn, race, chipnummer, køn, alder, helbredstilstand, erAdopteret);
+            KatteListe.Add(nyKat);
+        }
 
         public void VisDyreInfo(int chipnummer)
         {
@@ -44,8 +69,11 @@ namespace RoskildeDyreinternat
             {
                 if (hund.GetChipnummer() == chipnummer)
                 {
+                    Console.WriteLine($"Du har søgt efter Chipnummeret: {chipnummer}:");
                     Console.WriteLine("Hund fundet:");
-                    Console.WriteLine(hund); // Bruger ToString()
+                    Console.WriteLine();
+                    Console.WriteLine(hund.PrintAltInfo()); ;
+                    Console.WriteLine();
                     return;
                 }
             }
@@ -55,8 +83,11 @@ namespace RoskildeDyreinternat
             {
                 if (kat.GetChipnummer() == chipnummer)
                 {
+                    Console.WriteLine($"Du har søgt efter Chipnummeret: {chipnummer}:");
                     Console.WriteLine("Kat fundet:");
-                    Console.WriteLine(kat); // Bruger ToString()
+                    Console.WriteLine();
+                    Console.WriteLine(kat.PrintAltInfo()); // Bruger ToString()
+                    Console.WriteLine();
                     return;
                 }
             }
@@ -65,36 +96,49 @@ namespace RoskildeDyreinternat
             Console.WriteLine($"Intet dyr fundet med chipnummer {chipnummer}.");
         }
 
+        public bool TilføjDyr(Dyr dyr)
+        {
+            if (dyr == null)
+                return false;
+
+            if (dyr is Hund hund)
+            {
+                return AddHund(hund);
+            }
+            else if (dyr is Kat kat)
+            {
+                return AddKat(kat);
+            }
+            else
+            {
+                Console.WriteLine("Ukendt dyretype.");
+                return false;
+            }
+        }
 
 
 
         // KatteListe hvor der kan tilføjes en hund
         public bool AddKat(Kat _kat)
         {
+            if (_kat == null)
+                return false;
 
+            // Tjek om katten med samme chipnummer allerede findes
             foreach (Kat kat in KatteListe)
             {
-                //Tjekker om den nyoprettede kat, ikke har samme chipnummer som en kat på listen.
-                if (_kat != null && kat.GetChipnummer == _kat.GetChipnummer)
+                if (kat.GetChipnummer() == _kat.GetChipnummer())
                 {
-                    KatteListe.Add(_kat); // gemmer de katte der blev tilføjet
-                    return true;
+                    // Katten findes allerede - tilføj ikke
+                    return false;
                 }
             }
 
-            //for-loop: Tjekker om den nyoprettede kat, ikke har samme chipnummer som en kat på listen.
-            //for (int i = 0; i < KatteListe.Count; i++)
-            //{
-            //    if (!(KatteListe[i].chipnummer == _kat.chipnummer))
-            //    {
-            //        KatteListe.Add(_kat);
-            //        return true;
-            //    }
-            //}
-
-
-            return false; // returnerer listen over katte, der blev tilføjet
+            // Hvis vi kommer her, findes katten ikke - tilføj den
+            KatteListe.Add(_kat);
+            return true;
         }
+
 
         //While-loop: Tjekker om den nyoprettede kat, ikke har samme chipnummer som en kat på listen.
         //public bool AddKat(Kat _kat)

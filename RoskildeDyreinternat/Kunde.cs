@@ -36,10 +36,9 @@ namespace RoskildeDyreinternat
         }
 
         //den printer info om ALLE Kunde
-        public override void PrintAltInfo()
+        public override string PrintAltInfo()
         {
-            Console.WriteLine($"Kunde Info:");
-            Console.WriteLine($"Navn: {Navn}, ID: {Id}, Email: {Email}, Tlf: {Telefon}, Adresse: {Adresse},Alder: {Alder},Rolle: {Rolle}, Køn: {Køn}");
+            return $" ID: {Id}\nNavn: {Navn}\nEmail: {Email}\nAdresse: {Adresse}\nTlf: {Telefon}\nRolle: {Rolle}\nAlder: {Alder}\nKøn: {Køn}";
 
         }
     }

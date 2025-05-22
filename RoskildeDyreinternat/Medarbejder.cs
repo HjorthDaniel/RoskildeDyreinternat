@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
-    // Private fields med lille begyndelsesbogstav
     public class Medarbejder : Bruger
     {
         //private fields med små bogstav
@@ -26,13 +26,13 @@ namespace RoskildeDyreinternat
         }
 
         // Propetities
-        private string Stilling
+        public string Stilling
         {
             get { return stilling; }
             set { stilling = value; }
         }
 
-        private int Antaltarbejdstimer
+        public int Antalarbejdstimer
 
         {
             get { return antalarbejdstimer; }
@@ -42,23 +42,10 @@ namespace RoskildeDyreinternat
 
 
         //den printer info om ALLE medarbejder
-        public override void PrintAltInfo()
+        public override string PrintAltInfo()
         {
-            Console.WriteLine($"Medarbejder Info:");
-            Console.WriteLine($"Navn: {Navn}, ID: {Id}, Email: {Email}, Tlf: {Telefon}, Adresse: {Adresse}, Rolle: {Rolle}, Stilling: {Stilling}, Antal af arbejdstimer: {Antaltarbejdstimer}");
-
-        }
-
-        public string GetStilling
-        {
-            get { return Stilling; }
-            set { Stilling = value; }
-        }
-
-        public int GetAntalArbejdstimer
-        {
-            get { return Antaltarbejdstimer; }
-            set { Antaltarbejdstimer = value; }
+            return $" ID: {Id}\nNavn: {Navn}\nEmail: {Email}\nAdresse: {Adresse}\nTlf: {Telefon}\nRolle: {Rolle}\nStilling: {Stilling}\nAntalArbejdstimer: {Antalarbejdstimer}";
+       
         }
     }
 }

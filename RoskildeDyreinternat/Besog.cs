@@ -35,7 +35,7 @@ namespace RoskildeDyreinternat
             }
         }
 
-        public void PrintBesøgsInfo()
+        public void PrintBesogsInfo()
         {
             Console.WriteLine($"Besøg #{Besogsnummer} - {Dato}");
             Kunde.PrintAltInfo();

@@ -64,7 +64,8 @@ namespace RoskildeDyreinternat
             
             }
             //den printer info om ALLE brugertyper
-            public abstract void PrintAltInfo();
+            public abstract string PrintAltInfo();
+
        
     }
 
