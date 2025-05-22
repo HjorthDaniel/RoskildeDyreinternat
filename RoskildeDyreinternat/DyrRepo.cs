@@ -140,6 +140,37 @@ namespace RoskildeDyreinternat
         }
 
 
+        public void Valgtedyr(int Valgtedyr)
+        {
+            Console.WriteLine("----------------------------------");
+            if (Valgtedyr == 1)
+            {
+                
+                foreach (var hund in HundeListe)
+                {
+                    Console.WriteLine(hund.PrintAltInfo());
+                    Console.WriteLine("----------------------------------");
+                }
+               
+            }
+            else if (Valgtedyr == 2)
+            {
+                foreach (var kat in KatteListe)
+                    
+                {
+                    Console.WriteLine(kat.PrintAltInfo());
+                    Console.WriteLine("----------------------------------");
+                }
+                
+            }
+            else
+            {
+                Console.WriteLine("Ukendt dyretype");
+            }
+        }
+
+
+
         //While-loop: Tjekker om den nyoprettede kat, ikke har samme chipnummer som en kat på listen.
         //public bool AddKat(Kat _kat)
         //{

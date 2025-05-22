@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel;
 
 namespace RoskildeDyreinternat
@@ -74,7 +75,7 @@ namespace RoskildeDyreinternat
 
             brugerRepo.VisBrugerInfo(3);
 
-            brugerRepo.VisBrugerInfo(4);
+        
 
     
 
@@ -161,7 +162,14 @@ namespace RoskildeDyreinternat
                                 // Her kunne du vise liste over dyr
                                 break;
                             case "2":
-                                Console.WriteLine("Filtrér dyr (fx efter art, alder)...");
+                                Console.WriteLine("vælg dyr der skal vises");
+                                Console.WriteLine("1. Hund");
+                                Console.WriteLine("2. Kat");
+
+                                // Det der skrives ind bliver nedenfor sikret er et tal, laves med int.Parse - det sikre at der ikke kan skrives bogstaver ind
+                                int filtrering = int.Parse(Console.ReadLine());
+                                dyrRepo.Valgtedyr(filtrering);
+
                                 // Her kunne du tilføje filtreringslogik
                                 break;
                             case "3":
