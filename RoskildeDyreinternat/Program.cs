@@ -87,11 +87,11 @@ namespace RoskildeDyreinternat
 
             Console.WriteLine("Søger dyr frem:");
 
-            dyrRepo.VisDyreInfo(123);
-            dyrRepo.VisDyreInfo(456);
-            dyrRepo.VisDyreInfo(1);
-            dyrRepo.VisDyreInfo(2);
-            dyrRepo.VisDyreInfo(6);
+            dyrRepo.VisDyrInfo(123);
+            dyrRepo.VisDyrInfo(456);
+            dyrRepo.VisDyrInfo(1);
+            dyrRepo.VisDyrInfo(2);
+            dyrRepo.VisDyrInfo(6);
            
 
             //Skaber Mellemrum

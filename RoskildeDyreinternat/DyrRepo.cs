@@ -62,7 +62,7 @@ namespace RoskildeDyreinternat
             KatteListe.Add(nyKat);
         }
 
-        public void VisDyreInfo(int chipnummer)
+        public void VisDyrInfo(int chipnummer)
         {
             // Søg i hundelisten
             foreach (var hund in HundeListe)
