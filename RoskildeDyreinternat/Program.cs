@@ -168,6 +168,10 @@ namespace RoskildeDyreinternat
 
                                 // Det der skrives ind bliver nedenfor sikret er et tal, laves med int.Parse - det sikre at der ikke kan skrives bogstaver ind
                                 int filtrering = int.Parse(Console.ReadLine());
+
+                                //Her parser (konverterer) int til en string, fordi at readline kun tager tekst som input, det er for at sikre sig, at en tekst string kan tage int 
+                                Console.WriteLine($"Du har valgt {filtrering.ToString()}.");
+                                
                                 dyrRepo.Valgtedyr(filtrering);
 
                                 // Her kunne du tilføje filtreringslogik
