@@ -37,6 +37,37 @@ namespace RoskildeDyreinternat
         }
 
 
+        public void VisDyreInfo(int chipnummer)
+        {
+            // Søg i hundelisten
+            foreach (var hund in HundeListe)
+            {
+                if (hund.GetChipnummer() == chipnummer)
+                {
+                    Console.WriteLine("Hund fundet:");
+                    Console.WriteLine(hund); // Bruger ToString()
+                    return;
+                }
+            }
+
+            // Søg i kattelisten
+            foreach (var kat in KatteListe)
+            {
+                if (kat.GetChipnummer() == chipnummer)
+                {
+                    Console.WriteLine("Kat fundet:");
+                    Console.WriteLine(kat); // Bruger ToString()
+                    return;
+                }
+            }
+
+            // Hvis ingen dyr blev fundet
+            Console.WriteLine($"Intet dyr fundet med chipnummer {chipnummer}.");
+        }
+
+
+
+
         // KatteListe hvor der kan tilføjes en hund
         public bool AddKat(Kat _kat)
         {

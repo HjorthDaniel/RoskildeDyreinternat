@@ -30,6 +30,19 @@ namespace RoskildeDyreinternat
             }
         }
 
+        public void OpretMedarbejder(int id, string navn, string email, string telefon, string adresse, string rolle, string stilling, int antalarbejdstimer)
+        {   
+            if(!_medarbejderListe.ContainsKey(id))
+            {
+                Medarbejder nyMedarbejder = new Medarbejder (id, navn, email, telefon,adresse, rolle, stilling, antalarbejdstimer);
+                _medarbejderListe.Add(id, nyMedarbejder);
+            }
+            else
+            {
+                throw new ArgumentException($"Medarbejder med ID {id} eksisterer allerede.");
+            } 
+        }
+
         public void OpdaterKundeInfo(int id, string navn, string email, string telefon, string adresse)
         {
             if (_kundeListe.TryGetValue(id, out Kunde kunde))
@@ -73,8 +86,7 @@ namespace RoskildeDyreinternat
                 {
                     throw new KeyNotFoundException($"Bruger med ID {id} blev ikke fundet.");
                 }
-            }
-            
+            }  
         }
         //søgfunktion ud fra ID
         public void VisBrugerInfo(int id)
