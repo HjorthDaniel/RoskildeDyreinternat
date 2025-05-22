@@ -26,23 +26,21 @@ namespace RoskildeDyreinternat
 
         public bool KanMedAndreKatte
         {
-            get { return this.KanMedAndreKatte; }
-            set { this.KanMedAndreKatte = value; }
+            get { return this.kanMedAndreKatte; }
+            set { this.kanMedAndreKatte = value; }
         }
         public bool SkalVæreIndekat
         {
-            get { return this.SkalVæreIndekat; }
-            set { this.SkalVæreIndekat = value; }
+            get { return this.skalVæreIndekat; }
+            set { this.skalVæreIndekat = value; }
         }
-        public override void PrintAltInfo()
+        public override string PrintAltInfo()
         {
-            Console.WriteLine($"Kat Info:");
-            Console.WriteLine($"Navn: {Navn}, Race: {Race}, Chipnummer: {Chipnummer}, Køn: {Køn}, Alder: {Alder}, Helbredstilstand: {Helbredstilstand}, Kan med andre katte: {KanMedAndreKatte}, Er indekat: {SkalVæreIndekat}");
-
+            return $"Navn: {Navn}\nRace: {Race}\nChipnummer: {Chipnummer}\nKøn: {Køn}\nAlder{Alder}\nHelbredstilstand {Helbredstilstand}\nErAdopteret {ErAdopteret}\nKanMedAndreHunde{KanMedAndreKatte}\nSkalVæreIndekat{SkalVæreIndekat}";
         }
-        public override void Lavlyd()
+        public override string Lavlyd()
         {
-            Console.WriteLine("Katten siger: Miau!");
+            return "Katten siger: Miau!";
         }
     }
 

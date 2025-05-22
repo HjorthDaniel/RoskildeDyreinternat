@@ -8,44 +8,40 @@ namespace RoskildeDyreinternat
 {
     public class Hund : Dyr
     {
-        public bool kanMedAndreHunde;
-        public bool erTrænet;
+        // Private fields med lille begyndelsesbogstav
+        private bool kanMedAndreHunde;
+        private bool erTrænet;
 
-
-        public Hund (bool KanMedAndreHunde,  bool ErTrænet, string navn, string race, int chipnummer, string køn, int alder, string helbredstilstand, bool erAdopteret)
+        // Konstruktør med parametre 
+        public Hund (bool kanMedAndreHunde,  bool erTrænet, string navn, string race, int chipnummer, string køn, int alder, string helbredstilstand, bool erAdopteret)
+            
             : base (navn, race, chipnummer, køn, alder, helbredstilstand, erAdopteret)
         {
-            this.kanMedAndreHunde = KanMedAndreHunde;
-            this.erTrænet = ErTrænet;
+            // Brug af 'this.' for at skelne mellem felt og parameter
+            this.kanMedAndreHunde = kanMedAndreHunde;
+            this.erTrænet = erTrænet;
         }
 
         public bool KanMedAndreHunde
         {
-            get { return KanMedAndreHunde; }
-            set { KanMedAndreHunde = value; }
+            get { return kanMedAndreHunde; }
+            set { kanMedAndreHunde = value; }
         }
 
         public bool ErTrænet
         {
-            get { return ErTrænet; }
+            get { return erTrænet; }
             set { erTrænet = value; }
         }
 
-        public override void PrintAltInfo() // <- krævet af abstract base class
+        public override string PrintAltInfo() // <- krævet af abstract base class
         {
-            Console.WriteLine($"Navn: {Navn}");
-            Console.WriteLine($"Race: {Race}");
-            Console.WriteLine($"Chipnummer: {Chipnummer}");
-            Console.WriteLine($"Køn: {Køn}");
-            Console.WriteLine($"Alder: {Alder}");
-            Console.WriteLine($"Helbredstilstand: {Helbredstilstand}");
-            Console.WriteLine($"Er adopteret: {ErAdopteret}");
-            Console.WriteLine($"Kan med andre hunde: {KanMedAndreHunde}");
-            Console.WriteLine($"Er trænet: {ErTrænet}");
+            return $"Navn: {Navn}\nRace: {Race}\nChipnummer: {Chipnummer}\nKøn: {Køn}\nAlder{Alder}\nHelbredstilstand {Helbredstilstand}\nErAdopteret {ErAdopteret}\nkanMedAndreHunde{KanMedAndreHunde}\nErTrænet{ErTrænet}";
         }
-        public override void Lavlyd()
+
+        public override string Lavlyd()
         {
-            Console.WriteLine("Hunden siger: Vuf!");
+            return "Hunden siger: Vuf!";
         }
 
     }

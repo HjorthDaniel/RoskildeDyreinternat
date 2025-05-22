@@ -8,10 +8,11 @@ namespace RoskildeDyreinternat
     {
         static void Main(string[] args)
         {
+            #region Alle Objekter 
             // Opretter en ny instans af KundeRepo
-            BrugerRepo kundeRepo = new BrugerRepo();
+            BrugerRepo brugerRepo = new BrugerRepo();
             BesogRepo besogRepo = new BesogRepo();
-
+            DyrRepo dyrRepo = new DyrRepo();    
             
 
             //Dette er de kunder, der er oprettet
@@ -38,29 +39,29 @@ namespace RoskildeDyreinternat
             //Dette er de besog, der er oprettet
             Besog besog1 = new Besog(new DateTime(2025, 4, 15), kunde1,hund3);
             Besog besog2 = new Besog(new DateTime(2025, 3, 17), kunde2, kat1);
+            #endregion
 
 
-            
-            
-            
+
+            Console.WriteLine(hund3.PrintAltInfo());
+            Console.WriteLine(hund3.Lavlyd());
 
 
-            
 
-
+            // Dette bruges til at fange og håndtere fejl - fx forsger man her, at tilføje en kunde med et ID som allreede findes 
             //try
             //{
-            //    kundeRepo.AddKunde(kunde);
-            //    // kundeRepo.AddKunde(kunde);
+            //    brugerRepo.AddKunde(kunde);
+            //    // brugerRepo.AddKunde(kunde);
 
             //    besogRepo.AddBesog(besog);
-                
+
 
 
             //}
             //catch (Exception ex)
             //{
-            //    Console.WriteLine($"Der opstod en fejl, dette ID eksisterer allerede til en kunde:");
+            //    Console.WriteLine($"Der opstod en fejl, dette ID eksisterer allerede til en kunde/medarbejder:");
             //}
 
 
