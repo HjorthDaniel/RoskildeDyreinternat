@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
-    public interface IKundeRepo
+    public interface IBrugerRepo
     {
-        public void AddKunde(Kunde kunde);
     }
 }
