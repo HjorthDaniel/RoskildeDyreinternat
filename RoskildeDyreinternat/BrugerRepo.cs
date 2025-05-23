@@ -9,37 +9,35 @@ using System.Threading.Tasks;
 
 namespace RoskildeDyreinternat
 {
-    public class BrugerRepo
+    public class BrugerRepo : IBrugerRepo
     {
         //Dictionary bruges til at så noget op hurtigt ved hjælp af en key (Kunde ID) (Medarbejder ID)
         Dictionary<int, Kunde> _kundeListe = new Dictionary<int, Kunde>();
         Dictionary<int, Medarbejder> _medarbejderListe = new Dictionary<int, Medarbejder>();
 
 
-        public void OpretKunde(int id, string navn, string email, string telefon, string adresse, string rolle, string køn, int alder)
+        public void OpretKunde(Kunde kunde)
         // Opretter en ny kunde og tilføjer den til listen, hvis ID'et ikke allerede findes
         {
-            if (!_kundeListe.ContainsKey(id))
+            if (!_kundeListe.ContainsKey(kunde.Id))
             {
-                Kunde nyKunde = new Kunde(id, navn, email, telefon, adresse, rolle, alder, køn);
-                _kundeListe.Add(id, nyKunde);
+                 _kundeListe.Add(kunde.Id, kunde);
             }
             else
             {
-                throw new ArgumentException($"Bruger med ID {id} eksisterer allerede.");
+                throw new ArgumentException($"Bruger med ID {kunde.Id} eksisterer allerede.");
             }
         }
 
-        public void OpretMedarbejder(int id, string navn, string email, string telefon, string adresse, string rolle, string stilling, int antalarbejdstimer)
+        public void OpretMedarbejder(Medarbejder medarbejder)
         {   
-            if(!_medarbejderListe.ContainsKey(id))
+            if(!_medarbejderListe.ContainsKey(medarbejder.Id))
             {
-                Medarbejder nyMedarbejder = new Medarbejder (id, navn, email, telefon,adresse, rolle, stilling, antalarbejdstimer);
-                _medarbejderListe.Add(id, nyMedarbejder);
+                _medarbejderListe.Add(medarbejder.Id, medarbejder);
             }
             else
             {
-                throw new ArgumentException($"Medarbejder med ID {id} eksisterer allerede.");
+                throw new ArgumentException($"Medarbejder med ID {medarbejder.Id} eksisterer allerede.");
             } 
         }
 
@@ -100,23 +98,21 @@ namespace RoskildeDyreinternat
                 Console.WriteLine($"Bruger ID: {kunde.Id}, Navn: {kunde.Navn}, Email: {kunde.Email}, Tlf: {kunde.Telefon}, Adresse: {kunde.Adresse}, Alder: {kunde.Alder}, Køn: {kunde.Køn}");
                 Console.WriteLine();
             }
+            else if (_medarbejderListe.TryGetValue(id, out Medarbejder medarbejder))
+            {
+                Console.WriteLine($"Du har søgt efter ID: {id}:");
+                Console.WriteLine();
+                Console.WriteLine($"Bruger ID: {medarbejder.Id}, Navn: {medarbejder.Navn}, Email: {medarbejder.Email}, Tlf: {medarbejder.Telefon},"
+                    + $" Adresse: {medarbejder.Adresse}, Rolle: {medarbejder.Rolle}, Stilling: {medarbejder.Stilling}, Arbejdstimer: {medarbejder.Antalarbejdstimer}");
+                Console.WriteLine();
+            }
             else
             {
-                if (_medarbejderListe.TryGetValue(id, out Medarbejder medarbejder))
-                {
-                    Console.WriteLine($"Du har søgt efter ID: {id}:");
-                    Console.WriteLine();
-                    Console.WriteLine($"Bruger ID: {medarbejder.Id}, Navn: {medarbejder.Navn}, Email: {medarbejder.Email}, Tlf: {medarbejder.Telefon}," 
-                        + $"Adresse: {medarbejder.Adresse}, Rolle: {medarbejder.Rolle}, Stilling: {medarbejder.Stilling}, Arbejdstimer: {medarbejder.Antalarbejdstimer}");
-                    Console.WriteLine();
-                }
-                else
-                {
-                    throw new KeyNotFoundException($"Bruger med ID {id} blev ikke fundet.");
-                }
+                throw new KeyNotFoundException($"Bruger med ID {id} blev ikke fundet.");
             }
-
         }
+
+
 
 
 

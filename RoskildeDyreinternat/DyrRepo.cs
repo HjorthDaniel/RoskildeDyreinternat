@@ -12,15 +12,31 @@ namespace RoskildeDyreinternat
             List<Hund> HundeListe = new List<Hund>();
             List<Kat> KatteListe = new List<Kat>();
 
-            
 
-        
+
+
         // Hundeliste hvor der kan tilføjes en hund
         public bool AddHund(Hund hund)
         {
-            if (hund != null && !HundeListe.Contains(hund))
+            if (hund != null && !HundeListe.Any(h => h.GetChipnummer() == hund.GetChipnummer()))
             {
                 this.HundeListe.Add(hund);
+                return true;
+            }
+            else
+            {
+                //Her kan der tilføjes en besked her
+                Console.WriteLine("Hunden findes allerede.");
+                return false;
+
+            }
+        }
+
+        public bool AddKat(Kat kat)
+        {
+            if (kat != null && !KatteListe.Any(k => k.GetChipnummer() == kat.GetChipnummer()))
+            {
+                this.KatteListe.Add(kat);
                 return true;
             }
             else
@@ -38,29 +54,8 @@ namespace RoskildeDyreinternat
             return HundeListe;
         }
 
-        public void OpretHund(bool kanMedAndreHunde, bool erTrænet, string navn, string race, int chipnummer,
-        string køn, int alder, string helbredstilstand, bool erAdopteret)
-        {
-            if (HundeListe.Any(h => h.GetChipnummer() == chipnummer))
-            {
-                throw new ArgumentException($"Hund med chipnummer {chipnummer} findes allerede.");
-            }
 
-            Hund nyHund = new Hund(kanMedAndreHunde, erTrænet, navn, race, chipnummer, køn, alder, helbredstilstand, erAdopteret);
-            HundeListe.Add(nyHund);
-        }
-
-        public void OpretKat(bool kanMedAndreKatte, bool skalVæreIndekat, string navn, string race, int chipnummer,
-            string køn, int alder, string helbredstilstand, bool erAdopteret)
-        {
-            if (KatteListe.Any(k => k.GetChipnummer() == chipnummer))
-            {
-                throw new ArgumentException($"Kat med chipnummer {chipnummer} findes allerede.");
-            }
-
-            Kat nyKat = new Kat(kanMedAndreKatte, skalVæreIndekat, navn, race, chipnummer, køn, alder, helbredstilstand, erAdopteret);
-            KatteListe.Add(nyKat);
-        }
+        
 
         public void VisDyrInfo(int chipnummer)
         {
@@ -119,25 +114,25 @@ namespace RoskildeDyreinternat
 
 
         // KatteListe hvor der kan tilføjes en hund
-        public bool AddKat(Kat _kat)
-        {
-            if (_kat == null)
-                return false;
+        //public bool AddKat(Kat _kat)
+        //{
+        //    if (_kat == null)
+        //        return false;
 
-            // Tjek om katten med samme chipnummer allerede findes
-            foreach (Kat kat in KatteListe)
-            {
-                if (kat.GetChipnummer() == _kat.GetChipnummer())
-                {
-                    // Katten findes allerede - tilføj ikke
-                    return false;
-                }
-            }
+        //    // Tjek om katten med samme chipnummer allerede findes
+        //    foreach (Kat kat in KatteListe)
+        //    {
+        //        if (kat.GetChipnummer() == _kat.GetChipnummer())
+        //        {
+        //            // Katten findes allerede - tilføj ikke
+        //            return false;
+        //        }
+        //    }
 
-            // Hvis vi kommer her, findes katten ikke - tilføj den
-            KatteListe.Add(_kat);
-            return true;
-        }
+        //    // Hvis vi kommer her, findes katten ikke - tilføj den
+        //    KatteListe.Add(_kat);
+        //    return true;
+        //}
 
 
         public void Valgtedyr(int Valgtedyr)

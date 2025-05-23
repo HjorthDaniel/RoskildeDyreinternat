@@ -13,71 +13,68 @@ namespace RoskildeDyreinternat
             // Opretter en ny instans af KundeRepo
             BrugerRepo brugerRepo = new BrugerRepo();
             BesogRepo besogRepo = new BesogRepo();
-            DyrRepo dyrRepo = new DyrRepo();    
-            
+            DyrRepo dyrRepo = new DyrRepo();
+
 
             //Dette er de kunder, der er oprettet
-            //Kunde kunde1 = new Kunde(99, "Ida", "IdaEmail", "1234567", "Højvej 1", "Kunde", 23, "Mand");
-            //Kunde kunde2 = new Kunde(98, "Lone", "LoneEmail", "7654321", "Blomstervej","Kunde", 67, "Kvinde");
+            Kunde kunde1 = new Kunde(99, "Ida", "IdaEmail", "1234567", "Højvej 1", "Kunde", 23, "Mand");
+            Kunde kunde2 = new Kunde(98, "Lone", "LoneEmail", "7654321", "Blomstervej", "Kunde", 67, "Kvinde");
 
-            ////Dette er de medarbejder, der er oprettet
-            //Medarbejder medarbejder1 = new Medarbejder(1, "Emil", "emil@hund.dk", "+45 232323", "Denvej 7", "Frivillig","Frivillig", 0);
-            //Medarbejder medarbejder2 = new Medarbejder(2, "Emma", "emma@kat.dk", "+45 34 34 34 34", "Gladvej 2", "Medarbejder", "Dyrpasser", 37);
-            //Medarbejder medarbejder3 = new Medarbejder(3, "Erik", "erik@doctor.dk", "+45 11 11 22 22", "Flotvej 63","Medarbejder","Dyrlæge", 35);
+            //Dette er de medarbejder, der er oprettet
+            Medarbejder medarbejder1 = new Medarbejder(1, "Emil", "emil@hund.dk", "+45 232323", "Denvej 7", "Frivillig", "Frivillig", 0);
+            Medarbejder medarbejder2 = new Medarbejder(2, "Emma", "emma@kat.dk", "+45 34 34 34 34", "Gladvej 2", "Medarbejder", "Dyrpasser", 37);
+            Medarbejder medarbejder3 = new Medarbejder(3, "Erik", "erik@doctor.dk", "+45 11 11 22 22", "Flotvej 63", "Medarbejder", "Dyrlæge", 35);
 
             //Oprettede dyr nedenunder:
 
             ////Dette er de hunde, der er oprettet
-            //Hund hund1 = new Hund(true, true, "Stella", "race", 1, "hundhund", 3, "sund", false);
-            //Hund hund2 = new Hund(false, false, "Dennis", "ukendt", 2, "hanhund", 6, "mangler et ben", false);
-            //Hund hund3 = new Hund(true, false, "Bob", "ukendt", 3, "hanhund", 2, "sund", false);
-            
-            
-            ////Dette er de katte, der er oprettet
-            //Kat kat1 = new Kat(true, true , "Denas", "Siamese", 123, "han", 5, "Sund", false);
-            //Kat kat2 = new Kat(true, false, "Hansen", "Norsk Skovkat", 456, "han", 2, "Mangler et øje" ,false);
-            //Kat kat3 = new Kat(false, true, "Emil", "Maine Coon", 789, "han", 12, "Har sukkersyge", false);
+            Hund hund1 = new Hund(true, true, "Stella", "race", 1, "hundhund", 3, "sund", false);
+            Hund hund2 = new Hund(false, false, "Dennis", "ukendt", 2, "hanhund", 6, "mangler et ben", false);
+            Hund hund3 = new Hund(true, false, "Bob", "ukendt", 3, "hanhund", 2, "sund", false);
 
+
+            //Dette er de katte, der er oprettet
+            Kat kat1 = new Kat(true, true, "Denas", "Siamese", 123, "han", 5, "Sund", false);
+            Kat kat2 = new Kat(true, false, "Hansen", "Norsk Skovkat", 456, "han", 2, "Mangler et øje", false);
+            Kat kat3 = new Kat(false, true, "Emil", "Maine Coon", 789, "han", 12, "Har sukkersyge", false);
+
+
+            brugerRepo.OpretKunde(kunde1);
+            brugerRepo.OpretKunde(kunde2);
+
+          
 
             //Dette er de besog, der er oprettet
-            //Besog besog1 = new Besog(new DateTime(2025, 4, 15), kunde1,hund3);
-            //Besog besog2 = new Besog(new DateTime(2025, 3, 17), kunde2, kat1);
+            Besog besog1 = new Besog(new DateTime(2025, 4, 15), kunde1, hund3);
+            Besog besog2 = new Besog(new DateTime(2025, 3, 17), kunde2, kat1);
             #endregion
 
-            //Oprettelse af dyr (Både hunde og katte), både som objekt i sin egen klasse og i dyrRepo.
-
-            dyrRepo.OpretHund(true, true, "Stella", "race", 1, "hundhund", 3, "sund", false);
-            dyrRepo.OpretHund(false, false, "Dennis", "ukendt", 2, "hanhund", 6, "mangler et ben", false);
-            dyrRepo.OpretHund(true, false, "Bob", "ukendt", 3, "hanhund", 2, "sund", false);
-
-            dyrRepo.OpretKat(true, true, "Denas", "Siamese", 123, "han", 5, "Sund", false);
-            dyrRepo.OpretKat(true, false, "Hansen", "Norsk Skovkat", 456, "han", 2, "Mangler et øje", false);
-            dyrRepo.OpretKat(false, true, "Emil", "Maine Coon", 789, "han", 12, "Har sukkersyge", false);
-
-
-            //Oprettelse af brugere (Både kunder og medarbejdere), både som objekt i egen klasse og i brugerRepo.
-
-            brugerRepo.OpretKunde(99, "Ida", "IdaEmail", "1234567", "Højvej 1", "Kunde", "Kvinde", 22);
-            brugerRepo.OpretKunde(98, "Lone", "LoneEmail", "7654321", "Blomstervej", "Kunde", "Kvinde", 67);
-
-            brugerRepo.OpretMedarbejder(1, "Emil", "emil@hund.dk", "+45 232323", "Denvej 7", "Frivillig", "Frivillig", 0);
-            brugerRepo.OpretMedarbejder(2, "Emma", "emma@kat.dk", "+45 34 34 34 34", "Gladvej 2", "Medarbejder", "Dyrpasser", 37);
-            brugerRepo.OpretMedarbejder(3, "Erik", "erik@doctor.dk", "+45 11 11 22 22", "Flotvej 63", "Medarbejder", "Dyrlæge", 35);
-
-            //Kan søges frem via. 
 
 
 
-            
+
+
+
+            dyrRepo.TilføjDyr(hund1);
+            dyrRepo.TilføjDyr(hund2);
+            dyrRepo.TilføjDyr(hund3);
+
+            brugerRepo.OpretMedarbejder(medarbejder1);
+            brugerRepo.OpretMedarbejder(medarbejder2);
+            brugerRepo.OpretMedarbejder(medarbejder3);
+            dyrRepo.TilføjDyr(kat1);
+            dyrRepo.TilføjDyr(kat2);
+            dyrRepo.TilføjDyr(kat3);
+            //Console.WriteLine(kat1.PrintAltInfo());
+            //Console.WriteLine(kat1.Lavlyd());
+
+
+
             brugerRepo.VisBrugerInfo(1);
 
             brugerRepo.VisBrugerInfo(2);
 
             brugerRepo.VisBrugerInfo(3);
-
-        
-
-    
 
             //Skaber Mellemrum
             Console.WriteLine();
@@ -100,26 +97,26 @@ namespace RoskildeDyreinternat
 
             //Console.WriteLine(hund3.PrintAltInfo());
             //Console.WriteLine(hund3.Lavlyd());
-        
 
 
 
-            // Dette bruges til at fange og håndtere fejl - fx forsger man her, at tilføje en kunde med et ID som allreede findes 
-            //try
-            //{
-            //brugerRepo.OpretKunde(kunde1);
-            //brugerRepo.OpretKunde(kunde2);
 
-            //besogRepo.AddBesog(besog1);
+            //Dette bruges til at fange og håndtere fejl -fx forsger man her, at tilføje en kunde med et ID som allreede findes
+            try
+            {
+                brugerRepo.OpretKunde(kunde1);
+                brugerRepo.OpretKunde(kunde2);
+
+                besogRepo.AddBesog(besog1);
 
 
 
-            //    //Lav det som en kommentar og prøv at kør den. Fixed, kør!
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"Der opstod en fejl, dette ID eksisterer allerede til en kunde/medarbejder:");
-            //}
+                //Lav det som en kommentar og prøv at kør den. Fixed, kør!  
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Der opstod en fejl, dette ID eksisterer allerede til en kunde/medarbejder:");
+            }
 
             #region Switch menu
             {
@@ -208,7 +205,7 @@ namespace RoskildeDyreinternat
                                 string race = Console.ReadLine();
                                 Console.Write("Indtast chipnummer: ");
                                 string chip = Console.ReadLine();
-
+                                
                                 Console.WriteLine($"{dyrenavn} er nu oprettet som 'ledig'.");
                                 break;
 
@@ -224,9 +221,18 @@ namespace RoskildeDyreinternat
                                 break;
 
                             case "3":
-                                Console.Write("Indtast kundens navn: ");
-                                string kundenavn = Console.ReadLine();
-                                Console.WriteLine($"Viser oplysninger for {kundenavn}...");
+                                Console.Write("Indtast kundens ID: ");
+                                string kundeIDInput = Console.ReadLine();
+
+                                if (int.TryParse(kundeIDInput, out int kundeID))
+                                {
+                                    Console.WriteLine($"Viser oplysninger for ID {kundeID}...");
+                                    brugerRepo.VisBrugerInfo(kundeID); // nu sender du korrekt int
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ugyldigt ID – det skal være et tal.");
+                                }
                                 // Her kunne du vise kontaktoplysninger og bookinger
                                 break;
 
