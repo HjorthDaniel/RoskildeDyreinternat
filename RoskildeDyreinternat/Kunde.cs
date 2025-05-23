@@ -41,5 +41,7 @@ namespace RoskildeDyreinternat
             return $" ID: {Id}\nNavn: {Navn}\nEmail: {Email}\nAdresse: {Adresse}\nTlf: {Telefon}\nRolle: {Rolle}\nAlder: {Alder}\nKøn: {Køn}";
 
         }
+
+     
     }
 }

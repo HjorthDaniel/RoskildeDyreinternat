@@ -91,6 +91,41 @@ namespace RoskildeDyreinternat
             Console.WriteLine($"Intet dyr fundet med chipnummer {chipnummer}.");
         }
 
+        public void VisDyrInfo(string køn)
+        {
+            // Søg i hundelisten
+            foreach (var hund in HundeListe)
+            {
+                
+                if (hund.GetDyrByKøn() == køn)
+                {
+                    
+                    Console.WriteLine("Hund fundet:");
+                    Console.WriteLine();
+                    Console.WriteLine(hund.PrintAltInfo());
+                    Console.WriteLine();
+                    
+                }
+            }
+
+            // Søg i kattelisten
+            foreach (var kat in KatteListe)
+            {
+                
+                if (kat.GetDyrByKøn() == køn)
+                {
+                    
+                    Console.WriteLine("Kat fundet:");
+                    Console.WriteLine();
+                    Console.WriteLine(kat.PrintAltInfo()); // Bruger ToString()
+                    Console.WriteLine();
+                    
+                }
+            }
+
+          
+        }
+
         public bool TilføjDyr(Dyr dyr)
         {
             if (dyr == null)
@@ -113,7 +148,7 @@ namespace RoskildeDyreinternat
 
 
 
-        // KatteListe hvor der kan tilføjes en hund
+        // KatteListe hvor der kan tilføjes en kat
         //public bool AddKat(Kat _kat)
         //{
         //    if (_kat == null)
@@ -135,32 +170,53 @@ namespace RoskildeDyreinternat
         //}
 
 
-        public void Valgtedyr(int Valgtedyr)
+        public void ValgteDyr(int valgteDyr)
         {
             Console.WriteLine("----------------------------------");
-            if (Valgtedyr == 1)
+            if (valgteDyr == 1)
             {
                 
                 foreach (var hund in HundeListe)
                 {
-                    Console.WriteLine(hund.PrintAltInfo());
                     Console.WriteLine("----------------------------------");
+                    Console.WriteLine(hund.PrintAltInfo());
+                    
                 }
                
             }
-            else if (Valgtedyr == 2)
+            else if (valgteDyr == 2)
             {
                 foreach (var kat in KatteListe)
                     
                 {
-                    Console.WriteLine(kat.PrintAltInfo());
                     Console.WriteLine("----------------------------------");
+                    Console.WriteLine(kat.PrintAltInfo());
+                    
                 }
                 
             }
+            
+            else if (valgteDyr == 3)
+            {
+               
+                VisDyrInfo("han");
+
+         
+            }
+            
+            
+            else if (valgteDyr == 4)
+            {
+                
+                VisDyrInfo("hun");
+                
+            }
+            
             else
             {
+                
                 Console.WriteLine("Ukendt dyretype");
+                
             }
         }
 

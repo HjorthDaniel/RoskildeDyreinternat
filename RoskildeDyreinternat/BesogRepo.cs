@@ -18,6 +18,24 @@ namespace RoskildeDyreinternat
             }
             return false;
         }
-        
+        public List<Besog> HentBesogForKunde(Kunde kunde)
+        {
+            return _besogListe.Where(b => b.Kunde == kunde).ToList();
+        }
+
+       public string ToString()
+        {
+            string sb = "";
+            foreach (var besog in _besogListe)
+            {
+                sb += ($"Besøg #{besog.Besogsnummer} - {besog.Dato} ");
+                sb += ($"Kunde: {besog.Kunde.Navn} ");
+                sb += ($"Dyr: {besog.Dyr.Navn}");
+                sb += ("\n");
+            }
+            return sb.ToString();
+        }
+
+
     }
 }

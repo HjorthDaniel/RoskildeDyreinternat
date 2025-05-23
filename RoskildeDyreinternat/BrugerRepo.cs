@@ -15,6 +15,13 @@ namespace RoskildeDyreinternat
         Dictionary<int, Kunde> _kundeListe = new Dictionary<int, Kunde>();
         Dictionary<int, Medarbejder> _medarbejderListe = new Dictionary<int, Medarbejder>();
 
+        private BesogRepo _besogRepo;
+
+        public BrugerRepo(BesogRepo besogRepo)
+        {
+            _besogRepo = besogRepo;
+        }
+
 
         public void OpretKunde(Kunde kunde)
         // Opretter en ny kunde og tilføjer den til listen, hvis ID'et ikke allerede findes
@@ -95,15 +102,29 @@ namespace RoskildeDyreinternat
             {
                 Console.WriteLine($"Du har søgt efter ID: {id}:");
                 Console.WriteLine();
-                Console.WriteLine($"Bruger ID: {kunde.Id}, Navn: {kunde.Navn}, Email: {kunde.Email}, Tlf: {kunde.Telefon}, Adresse: {kunde.Adresse}, Alder: {kunde.Alder}, Køn: {kunde.Køn}");
+                Console.WriteLine($"Bruger ID: {kunde.Id}\n Navn: {kunde.Navn}\n Email: {kunde.Email}\n Tlf: {kunde.Telefon}\n Adresse: {kunde.Adresse}\n Alder: {kunde.Alder}\n Køn: {kunde.Køn}");
                 Console.WriteLine();
+                var kundeBesog = _besogRepo.HentBesogForKunde(kunde);
+                Console.WriteLine("Bookinger:");
+                if (kundeBesog.Count == 0)
+                {
+                    Console.WriteLine("Ingen bookinger fundet.");
+                }
+                else
+                {
+                    foreach (var besog in kundeBesog)
+                    {
+                        Console.WriteLine($"- Dato: {besog.Dato}, Dyr: {besog.PrintBesogsInfo()}");
+                    }
+                }
+
             }
             else if (_medarbejderListe.TryGetValue(id, out Medarbejder medarbejder))
             {
                 Console.WriteLine($"Du har søgt efter ID: {id}:");
                 Console.WriteLine();
-                Console.WriteLine($"Bruger ID: {medarbejder.Id}, Navn: {medarbejder.Navn}, Email: {medarbejder.Email}, Tlf: {medarbejder.Telefon},"
-                    + $" Adresse: {medarbejder.Adresse}, Rolle: {medarbejder.Rolle}, Stilling: {medarbejder.Stilling}, Arbejdstimer: {medarbejder.Antalarbejdstimer}");
+                Console.WriteLine($"Bruger ID: {medarbejder.Id}\n Navn: {medarbejder.Navn}\n Email: {medarbejder.Email}\n Tlf: {medarbejder.Telefon}\n"
+                    + $" Adresse: {medarbejder.Adresse}\n Rolle: {medarbejder.Rolle}\n Stilling: {medarbejder.Stilling}\n Arbejdstimer: {medarbejder.Antalarbejdstimer}");
                 Console.WriteLine();
             }
             else
@@ -113,8 +134,7 @@ namespace RoskildeDyreinternat
         }
 
 
-
-
+        
 
 
 

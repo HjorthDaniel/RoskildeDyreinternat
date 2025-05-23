@@ -11,8 +11,10 @@ namespace RoskildeDyreinternat
         {
             #region Alle Objekter 
             // Opretter en ny instans af KundeRepo
-            BrugerRepo brugerRepo = new BrugerRepo();
-            BesogRepo besogRepo = new BesogRepo();
+            var besogRepo = new BesogRepo();
+            var brugerRepo = new BrugerRepo(besogRepo); // KORREKT
+
+            
             DyrRepo dyrRepo = new DyrRepo();
 
 
@@ -28,14 +30,14 @@ namespace RoskildeDyreinternat
             //Oprettede dyr nedenunder:
 
             ////Dette er de hunde, der er oprettet
-            Hund hund1 = new Hund(true, true, "Stella", "race", 1, "hundhund", 3, "sund", false);
-            Hund hund2 = new Hund(false, false, "Dennis", "ukendt", 2, "hanhund", 6, "mangler et ben", false);
-            Hund hund3 = new Hund(true, false, "Bob", "ukendt", 3, "hanhund", 2, "sund", false);
+            Hund hund1 = new Hund(true, true, "Stella", "race", 1, "hun", 3, "sund", false);
+            Hund hund2 = new Hund(false, false, "Dennis", "ukendt", 2, "han", 6, "mangler et ben", false);
+            Hund hund3 = new Hund(true, false, "Bob", "ukendt", 3, "han", 2, "sund", false);
 
 
             //Dette er de katte, der er oprettet
             Kat kat1 = new Kat(true, true, "Denas", "Siamese", 123, "han", 5, "Sund", false);
-            Kat kat2 = new Kat(true, false, "Hansen", "Norsk Skovkat", 456, "han", 2, "Mangler et øje", false);
+            Kat kat2 = new Kat(true, false, "Hansen", "Norsk Skovkat", 456, "hun", 2, "Mangler et øje", false);
             Kat kat3 = new Kat(false, true, "Emil", "Maine Coon", 789, "han", 12, "Har sukkersyge", false);
 
 
@@ -48,7 +50,8 @@ namespace RoskildeDyreinternat
             Besog besog1 = new Besog(new DateTime(2025, 4, 15), kunde1, hund3);
             Besog besog2 = new Besog(new DateTime(2025, 3, 17), kunde2, kat1);
             #endregion
-
+            besogRepo.AddBesog(besog1);
+            besogRepo.AddBesog(besog2);
 
 
 
@@ -90,7 +93,13 @@ namespace RoskildeDyreinternat
             dyrRepo.VisDyrInfo(1);
             dyrRepo.VisDyrInfo(2);
             dyrRepo.VisDyrInfo(6);
-           
+
+            dyrRepo.VisDyrInfo("han");
+
+            dyrRepo.VisDyrInfo("hun");
+
+
+            
 
             //Skaber Mellemrum
             Console.WriteLine();
@@ -162,6 +171,8 @@ namespace RoskildeDyreinternat
                                 Console.WriteLine("vælg dyr der skal vises");
                                 Console.WriteLine("1. Hund");
                                 Console.WriteLine("2. Kat");
+                                Console.WriteLine("3. Han");
+                                Console.WriteLine("4. Hun");
 
                                 // Det der skrives ind bliver nedenfor sikret er et tal, laves med int.Parse - det sikre at der ikke kan skrives bogstaver ind
                                 int filtrering = int.Parse(Console.ReadLine());
@@ -169,7 +180,7 @@ namespace RoskildeDyreinternat
                                 //Her parser (konverterer) int til en string, fordi at readline kun tager tekst som input, det er for at sikre sig, at en tekst string kan tage int 
                                 Console.WriteLine($"Du har valgt {filtrering.ToString()}.");
                                 
-                                dyrRepo.Valgtedyr(filtrering);
+                                dyrRepo.ValgteDyr(filtrering);
 
                                 // Her kunne du tilføje filtreringslogik
                                 break;
@@ -194,6 +205,7 @@ namespace RoskildeDyreinternat
                         Console.WriteLine("1. Opret nyt dyr");
                         Console.WriteLine("2. Rediger oplysninger om dyr");
                         Console.WriteLine("3. Se kundeoplysninger");
+                        Console.WriteLine("4. Vis alle besøg");
 
                         string medarbejderValg = Console.ReadLine();
                         switch (medarbejderValg)
@@ -233,8 +245,13 @@ namespace RoskildeDyreinternat
                                 {
                                     Console.WriteLine("Ugyldigt ID – det skal være et tal.");
                                 }
-                                // Her kunne du vise kontaktoplysninger og bookinger
                                 break;
+                            // Her kunne du vise kontaktoplysninger og bookinger
+                            case "4":
+                                Console.WriteLine("Viser alle besøg:");
+                                Console.WriteLine(besogRepo.ToString());
+                                break;
+
 
                             default:
                                 Console.WriteLine("Ugyldigt valg.");

@@ -35,11 +35,11 @@ namespace RoskildeDyreinternat
             }
         }
 
-        public void PrintBesogsInfo()
+        public string PrintBesogsInfo()
         {
-            Console.WriteLine($"Besøg #{Besogsnummer} - {Dato}");
-            Kunde.PrintAltInfo();
-            Dyr.PrintAltInfo();
+            return $"Besøg #{Besogsnummer} - {Dato}\n" +
+                   $"Kunde: {Kunde.Navn}\n" +
+                   $"Dyr: {Dyr.Navn}\n";
         }
     }
 }
