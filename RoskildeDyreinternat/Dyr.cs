@@ -82,7 +82,7 @@ namespace RoskildeDyreinternat
             return (this.chipnummer);
         }
 
-        public string GetDyrByKøn()
+        public string GetKøn()
         {
             return (this.køn);
         }

@@ -91,20 +91,19 @@ namespace RoskildeDyreinternat
             Console.WriteLine($"Intet dyr fundet med chipnummer {chipnummer}.");
         }
 
-        public void VisDyrInfo(string køn)
+        public List<Dyr> GetDyrByKøn(string køn)
         {
-            // Søg i hundelisten
+            List <Dyr> dyrliste = new List<Dyr>();
+            // Tilføjer og returner en liste med dyr af det ønskede køn
             foreach (var hund in HundeListe)
             {
                 
-                if (hund.GetDyrByKøn() == køn)
+                if (hund.GetKøn().ToLower().Contains(køn.ToLower()))
                 {
-                    
-                    Console.WriteLine("Hund fundet:");
-                    Console.WriteLine();
-                    Console.WriteLine(hund.PrintAltInfo());
-                    Console.WriteLine();
-                    
+                    dyrliste.Add(hund);
+
+
+
                 }
             }
 
@@ -112,18 +111,16 @@ namespace RoskildeDyreinternat
             foreach (var kat in KatteListe)
             {
                 
-                if (kat.GetDyrByKøn() == køn)
+                if (kat.GetKøn().ToLower().Contains(køn.ToLower()))
                 {
-                    
-                    Console.WriteLine("Kat fundet:");
-                    Console.WriteLine();
-                    Console.WriteLine(kat.PrintAltInfo()); // Bruger ToString()
-                    Console.WriteLine();
-                    
+                    dyrliste.Add(kat);
+
                 }
             }
+            return dyrliste;
 
-          
+
+
         }
 
         public bool TilføjDyr(Dyr dyr)
@@ -198,8 +195,8 @@ namespace RoskildeDyreinternat
             
             else if (valgteDyr == 3)
             {
-               
-                VisDyrInfo("han");
+
+                GetDyrByKøn("han");
 
          
             }
@@ -207,8 +204,8 @@ namespace RoskildeDyreinternat
             
             else if (valgteDyr == 4)
             {
-                
-                VisDyrInfo("hun");
+
+                GetDyrByKøn("hun");
                 
             }
             

@@ -94,9 +94,9 @@ namespace RoskildeDyreinternat
             dyrRepo.VisDyrInfo(2);
             dyrRepo.VisDyrInfo(6);
 
-            dyrRepo.VisDyrInfo("han");
+            dyrRepo.GetDyrByKøn("han");
 
-            dyrRepo.VisDyrInfo("hun");
+            dyrRepo.GetDyrByKøn("hun");
 
 
             
@@ -181,7 +181,7 @@ namespace RoskildeDyreinternat
                                 Console.WriteLine($"Du har valgt {filtrering.ToString()}.");
                                 
                                 dyrRepo.ValgteDyr(filtrering);
-
+                                
                                 // Her kunne du tilføje filtreringslogik
                                 break;
                             case "3":
@@ -263,8 +263,15 @@ namespace RoskildeDyreinternat
                         Console.WriteLine("Ugyldig rolle valgt.");
                         break;
                 }
+                
             }
+            foreach (Dyr dyr in dyrRepo.GetDyrByKøn("hun"))
+            {
+                Console.WriteLine(dyr.PrintAltInfo());
+            }
+
         }
+
         #endregion
     }
 }
